@@ -1,0 +1,71 @@
+Nombre	Token
+Tipo
+Valor
+Tamañolucas	ID	nulo	nulo	nulo
+:=	ASIGN	nulo	nulo	nulo
+BOOL	ID	nulo	nulo	nulo
+boquitapierde1a0	ID	nulo	nulo	nulo
+b	ID	nulo	nulo	nulo
+"	COMILLA	nulo	nulo	nulo
+hola	ID	nulo	nulo	nulo
+mundo	ID	nulo	nulo	nulo
+nashe	ID	nulo	nulo	nulo
+asa	ID	nulo	nulo	nulo
+-	RESTA	nulo	nulo	nulo
+"hola"	CONST_STRING	nulo	"hola"	nulo
+"hola123"	CONST_STRING	nulo	"hola123"	nulo
+hola123	ID	nulo	nulo	nulo
+_	SEPARADOR	nulo	nulo	nulo
+"holamundo??__"	CONST_STRING	nulo	"holamundo??__"	nulo
+_hola juanita	CONST_STRING	nulo	hola juanita	14
+h	ID	nulo	nulo	nulo
+_	CONST_STRING	nulo		2
+_5	CONST_INT	nulo	5	nulo
+_hola	CONST_STRING	nulo	hola	6
+marina	ID	nulo	nulo	nulo
+_hola lucas	CONST_STRING	nulo	hola lucas	12
+bruno	ID	nulo	nulo	nulo
+_99.9	CONST_FLOAT	nulo	99.9	nulo
+_99.90	CONST_FLOAT	nulo	99.90	nulo
+_9	CONST_INT	nulo	9	nulo
+resul	ID	nulo	nulo	nulo
+CONTAR	ID	nulo	nulo	nulo
+(	PA	nulo	nulo	nulo
+<	MENOR	nulo	nulo	nulo
++	SUMA	nulo	nulo	nulo
+;	PYC	nulo	nulo	nulo
+[	CA	nulo	nulo	nulo
+d	ID	nulo	nulo	nulo
+,	COMA	nulo	nulo	nulo
+*	MULTIPLICACION	nulo	nulo	nulo
+_3	CONST_INT	nulo	3	nulo
+/	DIVISION	nulo	nulo	nulo
+_25	CONST_INT	nulo	25	nulo
+c	ID	nulo	nulo	nulo
+]	CC	nulo	nulo	nulo
+)	PC	nulo	nulo	nulo
+_34	CONST_INT	nulo	34	nulo
+and	ID	nulo	nulo	nulo
+==	EQUIVALENTE	nulo	nulo	nulo
+_1	CONST_INT	nulo	1	nulo
+_2	CONST_INT	nulo	2	nulo
+_4	CONST_INT	nulo	4	nulo
+>	MAYOR	nulo	nulo	nulo
+_23	CONST_INT	nulo	23	nulo
+INT	PRINT	nulo	nulo	nulo
+entero	ID	nulo	nulo	nulo
+FLOAT	PRFLOAT	nulo	nulo	nulo
+flotante	ID	nulo	nulo	nulo
+_6.99	CONST_FLOAT	nulo	6.99	nulo
+HEXA	PRHEXA	nulo	nulo	nulo
+hexadecimal	ID	nulo	nulo	nulo
+_(14F,16)	CONST_HEX	nulo	(14F,16)	nulo
+BIN	PRBIN	nulo	nulo	nulo
+binario	ID	nulo	nulo	nulo
+_(1001,2)	CONST_BIN	nulo	(1001,2)	nulo
+FOR	PRFOR	nulo	nulo	nulo
+I	ID	nulo	nulo	nulo
+_0	CONST_INT	nulo	0	nulo
+_10	CONST_INT	nulo	10	nulo
+{	LLAVEA	nulo	nulo	nulo
+}	LLAVEC	nulo	nulo	nulo

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TEO-TpPrimeraEntrega:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TEO_TpPrimeraEntrega_jar</output-path>
+    <root id="archive" name="TEO-TpPrimeraEntrega.jar">
+      <element id="module-output" name="TEO-TpPrimeraEntrega" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/TP-PrimeraParte/java-cup-11b-runtime_2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,13 @@
+INT entero := 23
+FLOAT flotante := 6.99
+HEXA hexadecimal := (14F,16)
+BIN binario := (1001,2)
+
+FOR (INT I := 0; I > 10; I := I+1){
+
+}
+
+
+resul:= CONTAR (<a+b;[d,d*3/e,25,c])
+resul:= CONTAR (<34 and ==c+3 ; [1,2,3*d,4,5]
+resul:= CONTAR (>a-5 ;[])
