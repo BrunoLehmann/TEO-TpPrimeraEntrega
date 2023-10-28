@@ -97,7 +97,7 @@ public String obtenerContenidoDeArchivo(String nombreArchivo) {
         byte[] buffer = new byte[(int) new File(nombreArchivo).length()];
         inputStream.read(buffer);
         inputStream.close();
-        return new String(buffer, "UTF-8"); // Puedes especificar la codificación adecuada
+        return new String(buffer, "UTF-8");
     } catch (IOException e) {
         System.err.println("Error al leer el archivo: " + e.getMessage());
         return null;
@@ -177,165 +177,140 @@ CONST_STRING = {COMILLA}(.)*{COMILLA}
 
 //"."            {System.out.println("Token PUNTO encontrado, Lexema "+ yytext());}
 
+":"             {System.out.println("Token DP encontrado, Lexema "+ yytext());
+                    res += "Token DP encontrado, Lexema "+ yytext() + "\n";}
+
 ","             {System.out.println("Token COMA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "COMA", "nulo",  "nulo", "nulo"));
                     res += "Token COMA encontrado, Lexema "+ yytext() + "\n";}
 
 \"              {System.out.println("Token COMILLA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "COMILLA", "nulo",  "nulo", "nulo"));
                     res += "Token COMILLA encontrado, Lexema "+ yytext() + "\n";}
 
-
 ":="			{System.out.println("Token ASIGN encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "ASIGN", "nulo",  "nulo", "nulo"));
                     res += "Token ASIGN encontrado, Lexema "+ yytext() + "\n";}
 
 "_"             {System.out.println("Token SEPARADOR encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "SEPARADOR", "nulo",  "nulo", "nulo"));
                     res += "Token SEPARADOR encontrado, Lexema "+ yytext() + "\n";}
 
 "TRUE"          {System.out.println("Token PRBOOLEANOV encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRBOOLEANOV", "nulo",  "VERDADERO", "nulo"));
                     res += "Token PRBOOLEANOV encontrado, Lexema "+ yytext() + "\n";}
 
 "FALSE"         {System.out.println("Token PRBOOLEANOF encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRBOOLEANOF", "nulo",  "FALSO", "nulo"));
                     res += "Token PRBOOLEANOF encontrado, Lexema "+ yytext() + "\n";}
 
 "FOR"			{System.out.println("Token PRFOR encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRFOR", "nulo",  "nulo", "nulo"));
                     res += "Token PRFOR encontrado, Lexema "+ yytext() + "\n";}
 
 "INT"			{System.out.println("Token PRINT encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRINT", "nulo",  "nulo", "nulo"));
                     res += "Token PRINT encontrado, Lexema "+ yytext() + "\n";}
 
 "FLOAT"         {System.out.println("Token PRFLOAT encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRFLOAT", "nulo",  "nulo", "nulo"));
                     res += "Token PRFLOAT encontrado, Lexema "+ yytext() + "\n";}
 
 "BIN"           {System.out.println("Token PRBIN encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRBIN", "nulo",  "nulo", "nulo"));
                     res += "Token PRBIN encontrado, Lexema "+ yytext() + "\n";}
 
 "HEXA"          {System.out.println("Token PRHEXA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRHEXA", "nulo",  "nulo", "nulo"));
                     res += "Token PRHEXA encontrado, Lexema "+ yytext() + "\n";}
 
 "STRING"         {System.out.println("Token PRSTRING encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRSTRING", "nulo",  "nulo", "nulo"));
                     res += "Token PRSTRING encontrado, Lexema "+ yytext() + "\n";}
 
 "BOOLEAN"       {System.out.println("Token PRBOOLEAN encontrado, Lexema "+ yytext());
-                 guardarTablaTokens(guardarTokenInfo(yytext(), "PRBOOLEAN", "nulo",  "nulo", "nulo"));
-                 res += "Token PRSTRING encontrado, Lexema "+ yytext() + "\n";
-                 }
+                 res += "Token PRSTRING encontrado, Lexema "+ yytext() + "\n";}
 
 "MOD"           {System.out.println("Token PRMOD encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRMOD", "nulo",  "nulo", "nulo"));
                     res += "Token MOD encontrado, Lexema "+ yytext() + "\n";}
 
 "AND"			{System.out.println("Token PRAND encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRAND", "nulo",  "nulo", "nulo"));
                     res += "Token PRAND encontrado, Lexema "+ yytext() + "\n";}
 
 "OR"			{System.out.println("Token PROR encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PROR", "nulo",  "nulo", "nulo"));
                     res += "Token PROR encontrado, Lexema "+ yytext() + "\n";}
 
 "WHILE"			{System.out.println("Token PRWHILE encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRWHILE", "nulo",  "nulo", "nulo"));
                     res += "Token PRWHILE encontrado, Lexema "+ yytext() + "\n";}
 
 "IF"			{System.out.println("Token PRIF encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRIF", "nulo",  "nulo", "nulo"));
                     res += "Token PRIF encontrado, Lexema "+ yytext() + "\n";}
 
 "ELSE"			{System.out.println("Token PRELSE encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRELSE", "nulo",  "nulo", "nulo"));
                     res += "Token PRELSE encontrado, Lexema "+ yytext() + "\n";}
 
-"FUNCTION"		{System.out.println("Token PRFUNCTION encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PRFUNCTION", "nulo",  "nulo", "nulo"));
-                    res += "Token FUNCTION encontrado, Lexema "+ yytext() + "\n";}
+"WRITE"			{System.out.println("Token PRWRITE encontrado, Lexema "+ yytext());
+                    res += "Token PRWRITE encontrado, Lexema "+ yytext() + "\n";}
+
+"DEFINE"			{System.out.println("Token PRDEFINE encontrado, Lexema "+ yytext());
+                    res += "Token PRDEFINE encontrado, Lexema "+ yytext() + "\n";}
+
+"ENDDEFINE"			{System.out.println("Token PRENDDEFINE encontrado, Lexema "+ yytext());
+                    res += "Token PRENDDEFINE encontrado, Lexema "+ yytext() + "\n";}
+
+"PROGRAM"			{System.out.println("Token PRPROGRAM encontrado, Lexema "+ yytext());
+                    res += "Token PRPROGRAM encontrado, Lexema "+ yytext() + "\n";}
+
+"END"			{System.out.println("Token PREND encontrado, Lexema "+ yytext());
+                    res += "Token PRENDPRENDDEFINE encontrado, Lexema "+ yytext() + "\n";}
+
+"RETURN"			{System.out.println("Token PRRETURN encontrado, Lexema "+ yytext());
+                    res += "Token PRRETURN encontrado, Lexema "+ yytext() + "\n";}                 
 
 "("				{System.out.println("Token PA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PA", "nulo",  "nulo", "nulo"));
                     res += "Token PA encontrado, Lexema "+ yytext() + "\n";}
 
 ")"				{System.out.println("Token PC encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PC", "nulo",  "nulo", "nulo"));
                     res += "Token PC encontrado, Lexema "+ yytext() + "\n";}
 
 "{"				{System.out.println("Token LLAVEA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "LLAVEA", "nulo",  "nulo", "nulo"));
                     res += "Token LLAVEA encontrado, Lexema "+ yytext() + "\n";}
 
 "}"				{System.out.println("Token LLAVEC encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "LLAVEC", "nulo",  "nulo", "nulo"));
                     res += "Token LLAVEC encontrado, Lexema "+ yytext() + "\n";}
 
 "["				{System.out.println("Token CA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "CA", "nulo",  "nulo", "nulo"));
                     res += "Token CA encontrado, Lexema "+ yytext() + "\n";}
 
 "]"				{System.out.println("Token CC encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "CC", "nulo",  "nulo", "nulo"));
                     res += "Token CC encontrado, Lexema "+ yytext() + "\n";}
 
 "="				{System.out.println("Token IGUAL encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "IGUAL", "nulo",  "nulo", "nulo"));
                     res += "Token IGUAL encontrado, Lexema "+ yytext() + "\n";}
 
 "=="			{System.out.println("Token EQUIVALENTE encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "EQUIVALENTE", "nulo",  "nulo", "nulo"));
                     res += "Token EQUIVALENTE encontrado, Lexema "+ yytext() + "\n";}
 
 "<"			    {System.out.println("Token MENOR encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MENOR", "nulo",  "nulo", "nulo"));
                     res += "Token MENOR encontrado, Lexema "+ yytext() + "\n";}
 
 ">"			    {System.out.println("Token MAYOR encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MAYOR", "nulo",  "nulo", "nulo"));
                     res += "Token MAYOR encontrado, Lexema "+ yytext() + "\n";}
 
 "<="			{System.out.println("Token MENIGUAL encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MENIGUAL", "nulo",  "nulo", "nulo"));
                     res += "Token MENIGUAL encontrado, Lexema "+ yytext() + "\n";}
 
 ">="			{System.out.println("Token MAYIGUAL encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MAYIGUAL", "nulo",  "nulo", "nulo"));
                     res += "Token MAYIGUAL encontrado, Lexema "+ yytext() + "\n";}
 
 "<>"			{System.out.println("Token DISTINTO encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "DISTINTO", "nulo",  "nulo", "nulo"));
                     res += "Token DISTINTO encontrado, Lexema "+ yytext() + "\n";}
 
 ";"				{System.out.println("Token PYC encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "PYC", "nulo",  "nulo", "nulo"));
                     res += "Token PYC encontrado, Lexema "+ yytext() + "\n";}
 
 "+="			{System.out.println("Token MASIGUAL encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MASIGUAL", "nulo",  "nulo", "nulo"));
                     res += "Token MASIGUAL encontrado, Lexema "+ yytext() + "\n";}
 
 "/"             {System.out.println("Token DIVISION encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "DIVISION", "nulo",  "nulo", "nulo"));
                     res += "Token DIVISION encontrado, Lexema "+ yytext() + "\n";}
 
 "*"             {System.out.println("Token MULTIPLICACION encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "MULTIPLICACION", "nulo",  "nulo", "nulo"));
                     res += "Token MULTIPLICACION encontrado, Lexema "+ yytext() + "\n";}
 
 "+"             {System.out.println("Token SUMA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "SUMA", "nulo",  "nulo", "nulo"));
-                    res += "Token SUMA encontrado, Lexema "+ yytext() + "\n";
-                    }
+                    res += "Token SUMA encontrado, Lexema "+ yytext() + "\n";}
 
 "-"             {System.out.println("Token RESTA encontrado, Lexema "+ yytext());
-                    guardarTablaTokens(guardarTokenInfo(yytext(), "RESTA", "nulo",  "nulo", "nulo"));
-                    res += "Token RESTA encontrado, Lexema "+ yytext() + "\n";
-                    }
+                    res += "Token RESTA encontrado, Lexema "+ yytext() + "\n";}
 
 {ID}			{System.out.println("Token ID encontrado, Lexema "+ yytext());
                     guardarTablaTokens(guardarTokenInfo(yytext(), "ID", "nulo",  "nulo", "nulo"));
