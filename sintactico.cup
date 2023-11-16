@@ -1,0 +1,205 @@
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java_cup.runtime.*;
+
+parser code
+{:
+    /**MEetodo que se llama auntokmaticamente ante algun error sintactico*/
+    public void syntax_error(Symbol s){
+        Sytem.out.println("Error en la linea "  (s.rigth+1) + " columna " + s.left + ". "
+            + s + " no reconocido. Valor " + s.value );
+    }
+:}
+
+action code
+{:
+:}
+
+
+
+/* Declaracion de Terminales*/
+Terminal ID, CONST_INT, CONST_STRING, CONST_FLOAT, 
+CONST_BIN, CONST_HEXA, DEFINE, ENDDEFINE, PROGRAM, 
+END, MENOR, MAYOR, INT, FLOAT, STRING, COMA, DP, 
+PYC, CA, CC, PA, PC, LLAVEA, LLAVEC, ASIG, IF, ELSE, 
+WHILE, RETURN, WRITE, MAYIGUAL, MENIGUAL, MENOR, MAYOR, 
+EQUIVALENTE, DISTINTO, SUMA, RESTA, MULTIPLICACION, 
+DIVISION, AND OR;
+
+/* Declaracion de No Terminales */
+non terminal program, bloqueDeclaraciones, declaraciones, 
+listaDeclaracion, declaracion, tipoDato, pgm, pgm1, programa, 
+programa1, sentencia,, asignacionMultiple, listaAsignacion, 
+iteracion, seleccion, contar, condicionContar, conmparacionContar, 
+write, writeCte, condicion, comparacion, comparador, expresion, 
+termino, factor, lista, constante;
+
+
+
+start with program;
+
+program ::= bloqueDeclaraciones  pgm {: Sytem.out.println("[Regla ] Programa con declaraciones"):}
+            | pgm1{: Sytem.out.println("[Regla ] Programa sin declaraciones"):}
+
+bloqueDeclaraciones ::= DEFINE declaraciones ENDDEFINE {: Sytem.out.println("[Regla ] BloqueDeclaraciones"):}
+
+declaraciones ::= declaraciones listaDeclaracion {: Sytem.out.println("[Regla ] Declaraciones"):}
+                | listaDeclaracion {: Sytem.out.println("[Regla ] ListaDeclaracion"):}
+        
+listaDeclaracion ::= MENOR  declaracion MAYOR {: Sytem.out.println("[Regla ] MENOR  Declaracion >"):}
+
+declaracion ::= tipoDato COMA declaracion COMA ID {: Sytem.out.println("[Regla ] Declaracion"):}
+                | tipoDato MAYOR DP MENOR ID {: Sytem.out.println("[Regla ] Tipo_Dato > : < ID"):}
+
+tipoDato ::= INT:int {: Sytem.out.println("[Regla ] Tipo dato  = " + Int):}
+            | FLOAT:Float {: Sytem.out.println("[Regla ] Tipo dato  = " + Float):}
+            | STRING:String {: Sytem.out.println("[Regla ] Tipo dato  = " + String):}
+
+pgm ::= PROGRAM programa END {: Sytem.out.println("[Regla ] PROGRAM Programa END"):}
+
+pgm1 ::= PROGRAM programa1 END {: Sytem.out.println("[Regla ] PROGRAM Programa1 END"):}
+
+programa ::= sentencia {: Sytem.out.println("[Regla ] Sentencia"):}
+
+programa ::= programa sentencia    {: Sytem.out.println("[Regla ] Programa"):}
+
+sentencia ::= asignacionMultiple {: Sytem.out.println("[Regla ] AsignacionMultiple"):}
+
+sentencia ::= iteracion {: Sytem.out.println("[Regla ] Iteracion"):}
+
+sentencia ::= seleccion {: Sytem.out.println("[Regla ] Seleccion"):}
+
+sentencia ::= write {: Sytem.out.println("[Regla ] Write"):}
+
+programa1 ::= programa1 writeCte {: Sytem.out.println("[Regla ] Programa1"):}
+            | writeCte {: Sytem.out.println("[Regla ] WriteCte "):}
+
+<asignacionMultiple ::= listaAsignacion ASIGN expresion {: Sytem.out.println("[Regla ] ListaAsignacion ASIGN Expresion"):}
+                | listaAsignacion ASIGN CONST_STRING {: Sytem.out.println("[Regla ] ListaAsignacion ASIGN CONST_STRING"):}
+
+listaAsignacion ::= listaAsignacion ID ASIGN {: Sytem.out.println("[Regla ] ListaAsignacion ID ASIGN"):}
+                | ID:id {: Sytem.out.println("[Regla ] Variable ID Valor = " + id):}
+
+contar ::= CONTAR PA condicionContar PYC CA lista CC PC {: Sytem.out.println("[Regla ] Contar"):}
+        | CONTAR PA <condicionContar> PYC CA CC PC {: Sytem.out.println("[Regla ] Contar Vacio"):}
+
+write ::= WRITE ID {: Sytem.out.println("[Regla ] WRITE ID"):}
+        | writeCte {: Sytem.out.println("[Regla ] WriteCte"):}
+
+
+writeCte ::= WRITE constante {: Sytem.out.println("[Regla ] WRITE Constante"):}
+        | WRITE CONST_STRING {: Sytem.out.println("[Regla ] WRITE CONST_STRING"):}
+
+iteracion ::= WHILE PA condicion PC LLAVEA programa LLAVEC {: Sytem.out.println("[Regla ] Iteracion While"):}
+
+seleccion ::= IF PA condicion PC LLAVEA programa LLAVEC ELSE LLAVEA programa LLAVEC {: Sytem.out.println("[Regla ] Seleccion If/Else"):}
+
+seleccion ::= IF PA condicion PC LLAVEA programa LLAVEC {: Sytem.out.println("[Regla ] Seleccion If"):}
+
+condicion ::= comparacion {: Sytem.out.println("[Regla ] Comparacion"):}
+
+condicion ::= comparacion AND comparacion {: Sytem.out.println("[Regla ] Comparacion AND Comparacion"):}
+
+condicion ::= comparacion OR comparacion {: Sytem.out.println("[Regla ] Comparacion OR Comparacion"):}
+
+comparacion ::= expresion comparador expresion {: Sytem.out.println("[Regla ] Expresion Comparador Expresion"):}  
+
+condicionContar ::= comparacionContar {: Sytem.out.println("[Regla ] Comparacion_Contar"):}
+
+condicionContar ::= comparacionContar AND comparacionContar {: Sytem.out.println("[Regla ] Comparacion_Contar AND Comparacion_Contar"):}
+
+condicionContar ::= comparacionContar OR comparacionContar {: Sytem.out.println("[Regla ] Comparacion_Contar OR Comparacion_Contar"):}
+
+comparacionContar ::= comparador expresion {: Sytem.out.println("[Regla ] Comparador Expresion"):}
+
+
+
+
+
+
+comparador ::= MAYIGUAL:>= {: Sytem.out.println("[Regla ] Simbolo = " + >=):} 
+        | MENIGUAL:>=  {: Sytem.out.println("[Regla ] Simbolo = " + <= ):} 
+        | MENOR: < {: Sytem.out.println("[Regla ] Simbolo = " + < ):}
+        | MAYOR: > {: Sytem.out.println("[Regla ] Simbolo = " + > ):}
+        | EQUIVALENTE:== {: Sytem.out.println("[Regla ] Simbolo = " + ==  ):}
+        | DISTINTO:<> {: Sytem.out.println("[Regla ] Simbolo = " + <> ):}    
+
+operador ::= SUMA:sum {: Sytem.out.println("[Regla ] Operador = " + sum):}
+        | RESTA:res {: Sytem.out.println("[Regla ] Operador = " + res):}
+        | MULTIPLICACION :mul{: Sytem.out.println("[Regla ] Operador = " + mul):}
+        | DIVISION:div {: Sytem.out.println("[Regla ] Operador = " + div):}
+
+expresion ::= expresion SUMA termino {: Sytem.out.println("[Regla ] Expresion + Termino"):} 
+        | expresion RESTA termino {: Sytem.out.println("[Regla ] Expresion - Termino"):}
+        | termino {: Sytem.out.println("[Regla ] Termino "):}
+
+termino ::= termino MULTIPLICACION factor {: Sytem.out.println("[Regla ] Termino * Tactor"):}
+        | termino  DIVISION factor {: Sytem.out.println("[Regla ] Termino / Tactor "):} 
+        | factor {: Sytem.out.println("[Regla ] Factor"):}
+
+factor ::= PA expresion PC {: Sytem.out.println("[Regla ] Parentesis_Abierto Expresion Parentesis_Cerrado"):} 
+        | ID:id  {: Sytem.out.println("[Regla ] Factor ID = " + id):}
+        | constante {: Sytem.out.println("[Regla ] constante"):}
+        | contar {: Sytem.out.println("[Regla ] Funcion Contar"):}
+
+lista ::=  lista COMA expresion {: Sytem.out.println("[Regla ] Lista"):}
+        | expresion {: Sytem.out.println("[Regla ] Expresion "):}
+
+constante ::= CONST_INT:INT {: Sytem.out.println("[Regla ] Constante = " + INT ):}
+        | CONST_FLOAT:FLOAT {: Sytem.out.println("[Regla ] Constante = " + FLOAT):}
+        | CONST_BIN:BIN {: Sytem.out.println("[Regla ] Constante = " + BIN):}
+        | CONST_HEXA:HEXA {: Sytem.out.println("[Regla ] Constante = " + HEXA):}
+
+
+
+
+
+
+
+
+
+
+/*
+
+<program> ::= <bloqueDeclaraciones>  <pgm> | <pgm1>
+<bloqueDeclaraciones>::= DEFINE <declaraciones> ENDDEFINE 
+<declaraciones> ::= <declaraciones> <listaDeclaracion> | <listaDeclaracion> 
+<listaDeclaracion> ::= MENOR  <declaracion> MAYOR
+<declaracion> ::= <tipoDato> COMA <declaracion> COMA ID | <tipoDato> MAYOR DP MENOR ID 
+<tipoDato> ::= INT | FLOAT | STRING
+<pgm> ::= PROGRAM <programa> END
+<pgm1> ::= PROGRAM <programa1> END
+<programa> ::= <sentencia>
+<programa> ::= <programa> <sentencia>
+<sentencia> ::= <asignacionMultiple>
+<sentencia> ::= <iteracion>
+<sentencia> ::= <seleccion>
+<sentencia> ::= <write>
+<programa1> ::= <programa1> <writeCte> | <writeCte>
+<asignacionMultiple> ::= <listaAsignacion> ASIGN <expresion> | <listaAsignacion> ASIGN CONST_STRING
+<listaAsignacion> ::= <listaAsignacion> ID ASIGN | ID
+<contar> ::= CONTAR PA <condicionContar> PYC CA <lista> CC PC | CONTAR PA <condicionContar> PYC CA CC PC
+<write> ::= WRITE ID | <writeCte> 
+<writeCte> ::= WRITE <constante> | WRITE CONST_STRING
+<iteracion> ::= WHILE PA <condicion> PC LLAVEA <programa> LLAVEC
+<seleccion> ::= IF PA <condicion> PC LLAVEA <programa> LLAVEC ELSE LLAVEA <programa> LLAVEC 
+<seleccion> ::= IF PA <condicion> PC LLAVEA <programa> LLAVEC
+<condicion> ::= <comparacion>
+<condicion> ::= <comparacion> AND <comparacion>
+<condicion> ::= <comparacion> OR <comparacion>
+<comparacion> ::= <expresion> <comparador> <expresion>     
+<condicionContar> ::= <comparacionContar>
+<condicionContar> ::= <comparacionContar> AND <comparacionContar>
+<condicionContar> ::= <comparacionContar> OR <comparacionContar>
+<comparacionContar> ::= <comparador>  <expresion>
+<comparador> ::= MAYIGUAL | MENIGUAL | MENOR | MAYOR | EQUIVALENTE | DISTINTO     
+<operador> ::= SUMA | RESTA | MULTIPLICACION | DIVISION
+<expresion> ::= <expresion> SUMA <termino> | <expresion> RESTA <termino> | <termino> 
+<termino> ::= <termino> MULTIPLICACION <factor>  | <termino>  DIVISION <factor>  | <factor>
+<factor> ::= PA <expresion> PC  | ID  | <constante> | <contar>
+<lista> ::=  <lista> COMA <expresion> | <expresion> 
+<constante> ::= CONST_INT | CONST_FLOAT | CONST_BIN | CONST_HEXA
+
+*/
