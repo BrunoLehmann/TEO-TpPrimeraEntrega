@@ -29,9 +29,9 @@ EQUIVALENTE, DISTINTO, SUMA, RESTA, MULTIPLICACION,
 DIVISION, AND OR;
 
 /* Declaracion de No Terminales */
-non terminal program, bloqueDeclaraciones, declaraciones, 
-listaDeclaracion, declaracion, tipoDato, pgm, pgm1, programa, 
-programa1, sentencia,, asignacionMultiple, listaAsignacion, 
+non terminal pgm, program, bloqueDeclaraciones, declaraciones, 
+listaDeclaracion, declaracion, tipoDato, pgm1, pgm2, programa1, 
+programa2, sentencia,, asignacionMultiple, listaAsignacion, 
 iteracion, seleccion, contar, condicionContar, conmparacionContar, 
 write, writeCte, condicion, comparacion, comparador, expresion, 
 termino, factor, lista, constante;
